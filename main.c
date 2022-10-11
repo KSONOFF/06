@@ -4,38 +4,43 @@
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 
-int sumTwo(int a, int b)
-{
-	int sum = a+b;
+int get_integer(void);
+int combination(int,int);
+int factorial(int);
 
-	return(sum);
-}
 
-int square(int n)
+int main(void)
 {
-	return(n*n);
-}
-		
-int get_max(int x, int y)
-{
-	if(x>y)
-		return x;
-	else
-		return y;
-}
+	int a,b;
 	
-int main(int argc, char *argv[]){
+	a = get_integer();
+	b = get_integer();
 	
-	int res_sum, res_square, res_get_max;
-	
-	res_sum = sumTwo(2,3);
-	res_square =square(5);
-	res_get_max = get_max(10,-20);
-	
-	printf("%i %i %i\n", res_sum, res_square, res_get_max);
-	
+	printf("C(%d,%d)= %d\n",a,b,combination(a,b));
 	return 0;
 }
+
+int combination(int n, int r)
+{
+	return(factorial(n)/(factorial(r)*factorial(n-r)));
+}
 	
+int get_integer(void)
+{
+	int n;
 	
+	printf("정수를 입력하세요: ");
+	scanf("%d", &n);
+	return n;
+}
+
+int factorial(int n)
+{
+	int i;
+	long result = 1;
+	
+	for(i=1;i<=n;i++)
+		result*=i; 
+	return result;
+}
 
